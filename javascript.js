@@ -80,3 +80,7 @@ restart.addEventListener("click",()=>{
 })
 loadQuestions()
 nextButton.disabled = true;
+
+
+/* login validation */
+
