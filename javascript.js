@@ -82,5 +82,3 @@ loadQuestions()
 nextButton.disabled = true;
 
 
-/* login validation */
-
