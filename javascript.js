@@ -16,8 +16,8 @@ const questions = [
     }
 ]
 
-let currenctQuestion = 0
-let score=0
+let currentQuestion = 0;
+let score=0;
 
 const questionE1 = document.getElementById("questions")
 const optionE1 =  document.getElementById("options")
@@ -26,19 +26,23 @@ const resultbox = document.getElementById("result-box")
 const scoreText = document.getElementById("score")
 
 const loadQuestions = ()=>{
-    const {question, options} = questions[currenctQuestion]
+    const {question, options} = questions[currentQuestion]
     questionE1.textContent = question;
     optionE1.innerHTML='';
     options.forEach(option=>{
         const btn = document.createElement("button")
         btn.classList.add("option")
+        btn.style.padding = "10px";
+        btn.style.background="gray";
+        btn.style.margin = "10px";
+        btn.style.color="white";
         btn.textContent = option;
         btn.onclick = ()=> checkAnswer(option)
         optionE1.appendChild(btn)
     })
 }
 const checkAnswer = (selectedOption)=>{
-    const  correct = questions[currenctQuestion].answer
+    const  correct = questions[currentQuestion].answer
     if(selectedOption ===correct){
         score++
     }
@@ -46,8 +50,8 @@ const checkAnswer = (selectedOption)=>{
 }
 
 nextButton.addEventListener("click", ()=>{
-    currenctQuestion++
-    if(currenctQuestion<questions.length){
+    currentQuestion++
+    if(currentQuestion<questions.length){
         loadQuestions()
         nextButton.disabled = true;
     }else{
@@ -62,5 +66,17 @@ const showResult = ()=>{
 
 }
 
+
+
+const restart = document.getElementById('restart')
+restart.addEventListener("click",()=>{
+    currentQuestion=0;
+    score=0;
+    resultbox.style.display= "none";
+    document.getElementById("quiz-box").style.display= "block"
+    loadQuestions()
+    nextButton.disabled =true;
+
+})
 loadQuestions()
 nextButton.disabled = true;
