@@ -280,7 +280,8 @@ form.addEventListener("submit", (event)=>{
     const validategender = validateGender(gender)
     const validcountry = validateCountry(country)
     const validterms = validateTerms(terms_conditions)
-    if(validName && validEmail && validpassword &&  ValidConfirmPassword && validPhonenumber && validategender && validcountry && validterms){
+    if(validName && validEmail && validpassword &&  ValidConfirmPassword && validPhonenumber && validategender
+     && validcountry && validterms){
         alert("Form submitted successfully")
         const userData ={
             fullName:fullName.value.trim(),
@@ -294,7 +295,7 @@ form.addEventListener("submit", (event)=>{
         }
 
         localStorage.setItem("signupData", JSON.stringify(userData))
-        alert("userdata stored in local storage")
+        window.location.href = "login.html"
     }
 })
 
@@ -335,7 +336,6 @@ const passwordValidation = (password)=>{
     }
     return true;
 }
-
 const confirmPasswordValidation = (confirmpassword, password) => {
   const confirmPasswordValue = confirmpassword.value.trim();
   const passwordValue = password.value.trim();
